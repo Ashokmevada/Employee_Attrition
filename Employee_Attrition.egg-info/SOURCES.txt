@@ -1,0 +1,14 @@
+README.md
+setup.py
+Employee_Attrition.egg-info/PKG-INFO
+Employee_Attrition.egg-info/SOURCES.txt
+Employee_Attrition.egg-info/dependency_links.txt
+Employee_Attrition.egg-info/top_level.txt
+src/__init__.py
+src/exception.py
+src/logger.py
+src/utils.py
+src/components/__init__.py
+src/components/data_ingestion.py
+src/components/data_transformation.py
+src/components/model_training.py
