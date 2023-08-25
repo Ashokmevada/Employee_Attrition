@@ -76,13 +76,25 @@ class DataTransformation:
             logging.info("Feature Selection Added Successfully")
 
             scaler = StandardScaler()
-            labelencoder = LabelEncoder() 
+            
 
             category_columns= list(train_df.select_dtypes(include = 'object').columns)        
 
+            label_dict = {}
             for column in category_columns:
+                labelencoder = LabelEncoder() 
                 train_df[column] = labelencoder.fit_transform(train_df[column])
                 test_df[column] = labelencoder.transform(test_df[column])
+                if column != "Attrition":
+                    label_dict[column] = labelencoder
+
+            logging.info(f"{label_dict}")
+                         
+            save_object(
+                
+                os.path.join('artifacts' , "label_encoders.pkl"),
+                label_dict
+            )
             
             target_column = "Attrition"
             X_train = train_df.drop(target_column, axis=1)

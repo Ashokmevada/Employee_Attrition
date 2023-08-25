@@ -64,3 +64,6 @@ if __name__ == '__main__':
 
     modelTrainer = ModelTraining()
     modelTrainer.initiate_model_training(train_arr, test_arr)
+
+
+    
