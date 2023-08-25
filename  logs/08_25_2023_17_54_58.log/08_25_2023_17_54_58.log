@@ -1,0 +1,9 @@
+[' 2023-08-25 17:54:59,513 '] 23 root - INFO -Starting data ingestion
+[' 2023-08-25 17:54:59,525 '] 30 root - INFO -Read the data 
+[' 2023-08-25 17:54:59,539 '] 36 root - INFO -Train Test Split Started
+[' 2023-08-25 17:54:59,555 '] 44 root - INFO -Ingestion Completed
+[' 2023-08-25 17:54:59,569 '] 33 root - INFO -Read train and test data set Successfully
+[' 2023-08-25 17:54:59,571 '] 42 root - INFO -Removing Outliers for train set
+[' 2023-08-25 17:54:59,589 '] 54 root - INFO -Removing Outliers for test set
+[' 2023-08-25 17:54:59,602 '] 67 root - INFO -Outliers Removed Successfully 
+[' 2023-08-25 17:54:59,603 '] 76 root - INFO -Feature Selection Added Successfully
