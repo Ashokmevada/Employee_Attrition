@@ -2,6 +2,12 @@ import os
 import pickle
 import sys
 from src.exception import CustomException
+from src.logger import logging
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import GridSearchCV , StratifiedKFold
+from sklearn.metrics import accuracy_score
+
 
 def save_object(file_path , object):
 
@@ -14,10 +20,6 @@ def save_object(file_path , object):
         with open(file_path , 'wb') as f:
             pickle.dump(object , f)
 
-            
-
-
-
-
     except Exception as e:
         raise CustomException(e , sys)
+    

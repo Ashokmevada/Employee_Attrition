@@ -1,0 +1,12 @@
+[' 2023-08-25 19:50:57,624 '] 24 root - INFO -Starting data ingestion
+[' 2023-08-25 19:50:57,640 '] 31 root - INFO -Read the data 
+[' 2023-08-25 19:50:57,662 '] 37 root - INFO -Train Test Split Started
+[' 2023-08-25 19:50:57,691 '] 45 root - INFO -Ingestion Completed
+[' 2023-08-25 19:50:57,713 '] 33 root - INFO -Read train and test data set Successfully
+[' 2023-08-25 19:50:57,715 '] 42 root - INFO -Removing Outliers for train set
+[' 2023-08-25 19:50:57,742 '] 54 root - INFO -Removing Outliers for test set
+[' 2023-08-25 19:50:57,761 '] 67 root - INFO -Outliers Removed Successfully 
+[' 2023-08-25 19:50:57,763 '] 76 root - INFO -Feature Selection Added Successfully
+[' 2023-08-25 19:50:57,786 '] 118 root - INFO -Preprocessing completed
+[' 2023-08-25 19:50:57,788 '] 30 root - INFO -Initializing model training
+[' 2023-08-25 19:50:57,789 '] 53 root - INFO -GridSearchCV evaluate model started
