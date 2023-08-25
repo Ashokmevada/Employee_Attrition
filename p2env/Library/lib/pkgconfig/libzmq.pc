@@ -1,0 +1,12 @@
+prefix=c:/Users/91812/Desktop/DATASCIENCE/End_to_End_Project/Employee_Attrition/p2env/Library
+exec_prefix=c:/Users/91812/Desktop/DATASCIENCE/End_to_End_Project/Employee_Attrition/p2env/Library
+libdir=c:/Users/91812/Desktop/DATASCIENCE/End_to_End_Project/Employee_Attrition/p2env/Library/lib
+includedir=c:/Users/91812/Desktop/DATASCIENCE/End_to_End_Project/Employee_Attrition/p2env/Library/include
+
+Name: libzmq
+Description: 0MQ c++ library
+Version: 4.3.4
+Libs: -L${libdir} -lzmq
+Libs.private: -lstdc++ 
+Requires.private: 
+Cflags: -I${includedir} 
