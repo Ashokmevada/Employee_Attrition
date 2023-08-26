@@ -1,0 +1,45 @@
+[' 2023-08-26 01:21:23,452 '] 187 werkzeug - INFO -[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:5000
+[' 2023-08-26 01:21:23,453 '] 187 werkzeug - INFO -[33mPress CTRL+C to quit[0m
+[' 2023-08-26 01:21:49,726 '] 187 werkzeug - INFO -127.0.0.1 - - [26/Aug/2023 01:21:49] "GET / HTTP/1.1" 200 -
+[' 2023-08-26 01:21:50,058 '] 187 werkzeug - INFO -127.0.0.1 - - [26/Aug/2023 01:21:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[' 2023-08-26 01:21:59,381 '] 187 werkzeug - INFO -127.0.0.1 - - [26/Aug/2023 01:21:59] "GET /predict HTTP/1.1" 200 -
+[' 2023-08-26 01:23:16,774 '] 1414 app - ERROR -Exception on /predict [POST]
+Traceback (most recent call last):
+  File "C:\Users\91812\Desktop\DATASCIENCE\End_to_End_Project\Employee_Attrition\src\utils.py", line 31, in load_object
+    with open(file_path , 'rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'artifacts\\label_encoder.pkl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\91812\Desktop\DATASCIENCE\End_to_End_Project\Employee_Attrition\src\pipeline\predict_pipeline.py", line 21, in predict
+    label_encoder_dict = load_object(label_encoder_dict_path)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\91812\Desktop\DATASCIENCE\End_to_End_Project\Employee_Attrition\src\utils.py", line 36, in load_object
+    raise CustomException(e , sys)
+src.exception.CustomException: Error occured in python script name [C:\Users\91812\Desktop\DATASCIENCE\End_to_End_Project\Employee_Attrition\src\utils.py] line number [31] error message [[Errno 2] No such file or directory: 'artifacts\\label_encoder.pkl']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\91812\Desktop\DATASCIENCE\End_to_End_Project\Employee_Attrition\p2env\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\91812\Desktop\DATASCIENCE\End_to_End_Project\Employee_Attrition\p2env\Lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\91812\Desktop\DATASCIENCE\End_to_End_Project\Employee_Attrition\p2env\Lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\91812\Desktop\DATASCIENCE\End_to_End_Project\Employee_Attrition\p2env\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\91812\Desktop\DATASCIENCE\End_to_End_Project\Employee_Attrition\app.py", line 49, in predict_attrition
+    result = predict_pipeline.predict(pred_df)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\91812\Desktop\DATASCIENCE\End_to_End_Project\Employee_Attrition\src\pipeline\predict_pipeline.py", line 38, in predict
+    raise CustomException(e , sys)
+src.exception.CustomException: Error occured in python script name [C:\Users\91812\Desktop\DATASCIENCE\End_to_End_Project\Employee_Attrition\src\pipeline\predict_pipeline.py] line number [21] error message [Error occured in python script name [C:\Users\91812\Desktop\DATASCIENCE\End_to_End_Project\Employee_Attrition\src\utils.py] line number [31] error message [[Errno 2] No such file or directory: 'artifacts\\label_encoder.pkl']]
+[' 2023-08-26 01:23:16,782 '] 187 werkzeug - INFO -127.0.0.1 - - [26/Aug/2023 01:23:16] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -

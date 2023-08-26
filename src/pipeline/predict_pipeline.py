@@ -15,7 +15,7 @@ class PredictPipeline:
 
             model_path = os.path.join('artifacts' , "model.pkl")
             preprocessor_path = os.path.join('artifacts' , 'preprocessor.pkl')
-            label_encoder_dict_path = os.path.join('artifacts' , 'label_encoder.pkl')
+            label_encoder_dict_path = os.path.join('artifacts' , 'label_encoders.pkl')
             model = load_object(model_path)
             preprocessor = load_object(preprocessor_path)
             label_encoder_dict = load_object(label_encoder_dict_path)
@@ -27,9 +27,10 @@ class PredictPipeline:
                 features[column] = labelEncoder.transform(features[column])
 
             data_transform = preprocessor.transform(features)
-            pred = model.predict(data_transform)
+            pred = model.predict_proba(data_transform)[0][1]
+            percentage = pred.round(2)*100
 
-            return pred
+            return percentage
             
 
 
