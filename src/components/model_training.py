@@ -5,8 +5,14 @@ from sklearn.linear_model import LogisticRegression
 from src.exception import CustomException
 from src.logger import logging
 from sklearn.model_selection import GridSearchCV , StratifiedKFold
-from src.utils import save_object
+from src.utils import save_object , evaluteModel
 from sklearn.metrics import accuracy_score
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import RandomForestClassifier , AdaBoostClassifier , GradientBoostingClassifier
+# from xgboost import XGBClassifier
+from sklearn.neighbors import KNeighborsClassifier
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -37,38 +43,93 @@ class ModelTraining:
 
             )
 
-            param = {
-            'penalty' : [ 'l1', 'l2' , 'elasticnet' , None],
-            'C' : [1.0 , 0.5 , 0.9 , 0.8 , 0.3],
-            'class_weight' : ['balanced'],
-            'solver' : ['lbfgs', 'liblinear', 'newton-cg' , 'newton-cholesky' , 'sag' , 'saga' ] ,
-            'max_iter' : [100 , 500 , 50 , 300  ,1000],
-            'l1_ratio' : [0 , 0.3 ,  0.5 , 0.9]             
+
+            models = {
+                "Logistic Regression" : LogisticRegression(),
+                "Decision Tree" : DecisionTreeClassifier(),
+                "SVC" : SVC(),
+                "Guassian Naive Bayes" : GaussianNB(),
+                "RandomForestClassifier" : RandomForestClassifier(),
+                "Adaboost Classifier" : AdaBoostClassifier(),
+                "GradientClassifier" : GradientBoostingClassifier(),
+                # "xgboost" : XGBClassifier(),
+                "KNN" : KNeighborsClassifier()
             }
 
 
-            logistic_model = LogisticRegression()
+            hyperparameters = {
+                "Logistic Regression": {
+                    "penalty": ["l1", "l2"],
+                    "C": [0.01, 0.1, 1.0, 10.0],
+                    "class_weight" : ['balanced'],
+                    "solver" : ['lbfgs', 'liblinear', 'newton-cg' , 'newton-cholesky' , 'sag' , 'saga' ]
+                }
+                ,
+                "Decision Tree": {
+                    "criterion": ["gini", "entropy"],
+                    "max_depth": [None, 10, 20, 30],
+                    "min_samples_split": [2, 5, 10]
+                },
+                "SVC": {
+                    "C": [0.01, 0.1, 1.0, 10.0],
+                    "kernel": ["linear", "poly", "rbf", "sigmoid"],
+                    "gamma" : ["scaled" , "auto"],
+                    
+                    "class_weight" : ['balanced']
+                },
+                "Guassian Naive Bayes": {},
+                "RandomForestClassifier": {
+                    "n_estimators": [10, 50, 100],
+                    "max_depth": [None, 10, 20, 30],
+                    "min_samples_split": [2, 5, 10],
+                    "criterion": ["gini", "entropy"]
+                },
+                "Adaboost Classifier": {
+                    "n_estimators": [50, 100, 200],
+                    "learning_rate": [0.01, 0.1, 1.0]
+                },
+                "GradientClassifier": {
+                    "n_estimators": [50, 100, 200],
+                    "learning_rate": [0.01, 0.1, 0.2],
+                    "max_depth": [3, 4, 5]
+                },
+                # "xgboost": {
+                #     "n_estimators": [50, 100, 200],
+                #     "learning_rate": [0.01, 0.1, 0.2],
+                #     "max_depth": [3, 4, 5]
+                # },
+                "KNN": {
+                    "n_neighbors": [3, 5, 7, 9],
+                    "weights": ["uniform", "distance"],
+                    "algorithm": ["auto", "ball_tree", "kd_tree", "brute"]
+                }
+            }           
 
+            logging.info("evaluate model started")
 
-            logging.info("GridSearchCV evaluate model started")
-            gs = GridSearchCV(logistic_model, param_grid= param , cv = StratifiedKFold(n_splits=5 , shuffle=True , random_state=42))    
+            model_performance:dict = evaluteModel(X_train , X_test , y_train , y_test , models , hyperparameters)
+          
+            best_model_score = max(sorted(model_performance.values()))
 
-            gs.fit(X_train , y_train)
+            best_model_name = list(model_performance.keys())[
+                list(model_performance.values()).index(best_model_score)
+            ]
 
-            logistic_model.set_params(**gs.best_params_)
-            logistic_model.fit(X_train , y_train)
+            best_model = models[best_model_name]
 
-            y_test_pred = logistic_model.predict(X_test)
+            if best_model_score < 0.6:
+                raise CustomException("No best model found")            
 
-            #accuracy = accuracy_score(y_test_pred , y_train)
-
-            #logging.info(f"accuracy_score {accuracy}")
+            print( best_model_name , best_model_score)
 
             save_object(
                 
                 self.model_config.model_path ,
-                logistic_model
+                best_model
             )
+
+
+            return accuracy_score(best_model.predict(X_test) , y_test)
 
         except Exception as e:
             raise CustomException(e, sys)
