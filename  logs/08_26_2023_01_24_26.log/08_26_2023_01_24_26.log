@@ -1,7 +1,0 @@
-[' 2023-08-26 01:24:27,668 '] 187 werkzeug - INFO -[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://localhost:5000
-[' 2023-08-26 01:24:27,668 '] 187 werkzeug - INFO -[33mPress CTRL+C to quit[0m
-[' 2023-08-26 01:24:35,732 '] 23 root - INFO -dict {'BusinessTravel': LabelEncoder(), 'Department': LabelEncoder(), 'EducationField': LabelEncoder(), 'Gender': LabelEncoder(), 'MaritalStatus': LabelEncoder(), 'OverTime': LabelEncoder()}
-[' 2023-08-26 01:24:35,744 '] 187 werkzeug - INFO -127.0.0.1 - - [26/Aug/2023 01:24:35] "POST /predict HTTP/1.1" 200 -
-[' 2023-08-26 01:26:27,365 '] 23 root - INFO -dict {'BusinessTravel': LabelEncoder(), 'Department': LabelEncoder(), 'EducationField': LabelEncoder(), 'Gender': LabelEncoder(), 'MaritalStatus': LabelEncoder(), 'OverTime': LabelEncoder()}
-[' 2023-08-26 01:26:27,374 '] 187 werkzeug - INFO -127.0.0.1 - - [26/Aug/2023 01:26:27] "POST /predict HTTP/1.1" 200 -

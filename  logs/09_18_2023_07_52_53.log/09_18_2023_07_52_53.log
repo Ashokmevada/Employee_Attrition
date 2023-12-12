@@ -1,4 +1,0 @@
-[' 2023-09-18 07:52:55,302 '] 113 werkzeug - INFO - * Running on http://localhost:5000/ (Press CTRL+C to quit)
-[' 2023-09-18 07:53:11,123 '] 113 werkzeug - INFO -127.0.0.1 - - [18/Sep/2023 07:53:11] "[37mGET / HTTP/1.1[0m" 200 -
-[' 2023-09-18 07:53:11,559 '] 113 werkzeug - INFO -127.0.0.1 - - [18/Sep/2023 07:53:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-[' 2023-09-18 07:53:18,526 '] 113 werkzeug - INFO -127.0.0.1 - - [18/Sep/2023 07:53:18] "[37mGET /predict HTTP/1.1[0m" 200 -
