@@ -50,10 +50,12 @@ def predict_attrition():
 
         return render_template('home.html' , result=result)
     
+        
+    
 
 if __name__ == '__main__':
 
-    app.run(host= 'localhost')
+    app.run(host= '0.0.0.0')
 
 
 
