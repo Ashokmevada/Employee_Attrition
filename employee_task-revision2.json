@@ -33,6 +33,7 @@
                     "awslogs-group": "/ecs/employee_task",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
+                    
                 },
                 "secretOptions": []
             }
