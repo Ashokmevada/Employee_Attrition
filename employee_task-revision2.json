@@ -1,17 +1,23 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:604451831908:task-definition/employee_task:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:604451831908:task-definition/employee_task:2",
     "containerDefinitions": [
         {
             "name": "employee_container",
-            "image": "604451831908.dkr.ecr.us-east-1.amazonaws.com/employee_attrition_repo",
+            "image": "604451831908.dkr.ecr.us-east-1.amazonaws.com/employee_registry",
             "cpu": 0,
             "portMappings": [
+                {
+                    "name": "employee_container-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                },
                 {
                     "name": "employee_container-5000-tcp",
                     "containerPort": 5000,
                     "hostPort": 5000,
-                    "protocol": "tcp",
-                    "appProtocol": "http"
+                    "protocol": "tcp"
                 }
             ],
             "essential": true,
@@ -35,7 +41,7 @@
     "family": "employee_task",
     "executionRoleArn": "arn:aws:iam::604451831908:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 1,
+    "revision": 2,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -72,13 +78,13 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "cpu": "512",
-    "memory": "1024",
+    "cpu": "1024",
+    "memory": "3072",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-02-23T08:40:13.406Z",
+    "registeredAt": "2024-02-23T19:13:20.241Z",
     "registeredBy": "arn:aws:iam::604451831908:root",
     "tags": []
 }

@@ -10,7 +10,7 @@ env:
   ECR_REPOSITORY: employee_registry
   ECS_SERVICE: employee_service
   ECS_CLUSTER: employee_cluster
-  ECS_TASK_DEFINITION: employee_task-revision1.json
+  ECS_TASK_DEFINITION: employee_task-revision2.json
   CONTAINER_NAME: employee_container
 
 jobs:
