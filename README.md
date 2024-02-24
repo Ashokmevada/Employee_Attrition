@@ -1,4 +1,4 @@
-# Employee Attrition Prediction Project
+# Employee Attrition Prediction Projects
 
 This repository contains the code and documentation for an Employee Attrition Prediction project. The project is designed to predict employee attrition within an organization using machine learning techniques.
 
