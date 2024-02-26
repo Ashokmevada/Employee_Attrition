@@ -1,20 +1,20 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:604451831908:task-definition/employee_task:2",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:604451831908:task-definition/employee_task:7",
     "containerDefinitions": [
         {
             "name": "employee_container",
-            "image": "604451831908.dkr.ecr.us-east-1.amazonaws.com/employee_registry",
+            "image": "604451831908.dkr.ecr.us-east-1.amazonaws.com/empolyee_registry:latest",
             "cpu": 0,
             "portMappings": [
                 {
-
+                    "name": "employee_container-80-tcp",
                     "containerPort": 80,
                     "hostPort": 80,
-                    "protocol": "tcp"
-                    
+                    "protocol": "tcp",
+                    "appProtocol": "http"
                 },
                 {
-                    
+                    "name": "employee_container-5000-tcp",
                     "containerPort": 5000,
                     "hostPort": 5000,
                     "protocol": "tcp"
@@ -33,7 +33,6 @@
                     "awslogs-group": "/ecs/employee_task",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
-                    
                 },
                 "secretOptions": []
             }
@@ -42,7 +41,7 @@
     "family": "employee_task",
     "executionRoleArn": "arn:aws:iam::604451831908:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 2,
+    "revision": 7,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -79,13 +78,13 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "cpu": "1024",
-    "memory": "3072",
+    "cpu": "512",
+    "memory": "1024",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-02-23T19:13:20.241Z",
+    "registeredAt": "2024-02-26T09:39:45.475Z",
     "registeredBy": "arn:aws:iam::604451831908:root",
     "tags": []
 }

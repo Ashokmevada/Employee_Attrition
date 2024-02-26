@@ -7,7 +7,7 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  ECR_REPOSITORY: employee_registry
+  ECR_REPOSITORY: empolyee_registry
   ECS_SERVICE: employee_service
   ECS_CLUSTER: employee_cluster
   ECS_TASK_DEFINITION: employee_task-revision2.json
