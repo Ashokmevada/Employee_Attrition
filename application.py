@@ -3,6 +3,11 @@ import pandas as pd
 import numpy as np
 
 from src.pipeline.predict_pipeline import PredictPipeline , CustomData
+import warnings
+from sklearn.exceptions import InconsistentVersionWarning
+
+warnings.filterwarnings("ignore", category=InconsistentVersionWarning)
+
 
 
 application = Flask(__name__)
